@@ -10,9 +10,7 @@ import parseForecast from './weatherParsing';
 import {getWeekday, getDate} from './dates';
 
 // sample openweathermap weather api call
-//https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=43.9698&lon=-123.2006&appid=e366707bc2ea3e949fb1c0a16ce76d59
-// sample openweathermap geolocation api call
-// http://api.openweathermap.org/geo/1.0/zip?zip=97405,US&appid=e366707bc2ea3e949fb1c0a16ce76d59
+// https://raw.githubusercontent.com/InsertName-42/BOTC-Script-Tool/refs/heads/main/BOTCAPP/BOTC/roles.json (File containing all avaliable roles and info)
  class Scripts{
 
  }
