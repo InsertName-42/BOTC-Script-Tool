@@ -1,5 +1,4 @@
-/* Webpack configuration file for the Weather app lab project */
-/* Revised by Brian Bird winter 2025 from starter files from Mari Good */
+/* Webpack configuration file for the BOTC ccript tool */
 const path = require('path');
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
