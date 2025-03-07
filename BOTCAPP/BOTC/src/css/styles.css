@@ -1,0 +1,75 @@
+body {
+  background-color: #353535; /* Light gray background */
+}
+#homebrewSection {
+  display: none;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000205; /* Bootstrap primary color */
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  color: #05060c; /* Darker shade for headings */
+}
+
+.container {
+  max-width: 800px; /* Limit container width */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+#addCharacterBtn,
+#generateHomebrewCharacter {
+  width: 100%; /* Full-width buttons */
+  padding: 10px; /* More padding for a better clickable area */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary color from Bootstrap */
+  border: none; /* Removes default button border */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+#homebrewSection {
+  background-color: #555353;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.characterImage {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background: #ffffff;
+  padding: 15px;
+}
+
+.scriptImage {
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  background: #050505;
+  padding: 15px;
+}
+
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #ffffff; 
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+label {
+  color: #000205;
+}

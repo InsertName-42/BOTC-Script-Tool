@@ -3,22 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const nameInput = document.getElementById('characterName');
     const homebrewSection = document.getElementById('homebrewSection');
     const addCharacterBtn = document.getElementById('addCharacterBtn');
-    const generateHomebrewCharacter = document.getElementById('generateHomebrewCharacter');
 
-    //Show or hide homebrew section based on character type selection
     characterType.addEventListener('change', function () {
-        if (this.value === 'homebrew') {
-            homebrewSection.style.display = 'block'; //Show the homebrew section
-        } else {
-            homebrewSection.style.display = 'none'; //Hide the homebrew section
-        }
+        homebrewSection.style.display = this.value === 'homebrew' ? 'block' : 'none';
     });
 
-    //Add character based on selection
     addCharacterBtn.addEventListener('click', function () {
         const name = nameInput.value.trim();
         if (characterType.value === 'base' && name) {
-            findCharacter(name);
+            FindCharacter.findCharacter(name); //Fetch and add base character
         } else if (characterType.value === 'homebrew') {
             const homebrewCharacter = {
                 name: name,
@@ -29,11 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tokens: document.getElementById('tokens').value,
             };
             DisplayBuild.displayBuild(homebrewCharacter); //Call to display the homebrew character
+            characterList.addCharacter(homebrewCharacter); //Add homebrew character to local storage
         }
-    });
-
-    //Generate the homebrew character on demand
-    generateHomebrewCharacter.addEventListener('click', function () {
-        //buildCharacter();
     });
 });

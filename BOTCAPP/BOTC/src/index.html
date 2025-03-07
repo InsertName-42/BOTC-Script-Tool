@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    
+    <script src="js/findCharacter.js" defer></script>
+    <script src="js/buildCharacter.js" defer></script>
+    <script src="js/characterList.js" defer></script>
+    <script src="js/buildScript.js" defer></script>
+    <script src="js/displayScript.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+    
 </head>
+
 <body>
-  <div id="app-container">
-      <div class="app">
+    <div class="container mt-5">
+        <h1>Add Character</h1>
 
-          <div class="zip-form">
-              <form id="zipForm">
-                  <div class="flex-parent">
-                    <label for="zipcode">Zip</label>
-                    <input class="form-control"
-                        type="input" id="zipcode" name="zipcode" 
-                        value="" required
-                    />
-                    <button type="submit" class="btn btn-success"> Get the forcast!</button>
-                </div>
-              </form>
-          </div>
+        <div class="form-group">
+            <label for="characterType">Select Character Type:</label>
+            <select class="form-control" id="characterType">
+                <option value="">Select...</option>
+                <option value="base">Base</option>
+                <option value="homebrew">Homebrew</option>
+            </select>
+        </div>
 
-          <div id="weatherList">
-            <!--
-            <div class="weather-list-item" data-index="0">
-              <h2>2 / 15</h2>
-              <h3>Wednesday</h3>
-              <h3>19.5°F | 43.5°F</h3>
+        <div class="form-group" id="nameSelection">
+            <label for="characterName">Character Name:</label>
+            <input type="text" class="form-control" id="characterName">
+        </div>
+
+        <button id="addCharacterBtn" class="btn btn-primary">Add Character</button>
+
+        <div id="homebrewSection" style="display: none;">
+            <h3>Homebrew Character Details</h3>
+            <div class="form-group">
+                <label for="team">Team:</label>
+                <input type="text" class="form-control" id="team">
             </div>
-            -->
-          </div>
-
-          <div id="currentDay">
-            <!--
-              <h1 class="day-header">Thursday in Eugene</h1>
-              <div class="weather">
-              <p>
-                  <img src="http://openweathermap.org/img/w/04d.png" alt="overcast clouds">
-                  overcast clouds
-              </p>
+            <div class="form-group">
+                <label for="ability">Ability:</label>
+                <input type="text" class="form-control" id="ability">
             </div>
-            <div class="details flex-parent">
-              <div class="temperature-breakdown">
-                <p>Morning Temperature: 29.03°F</p>
-                <p>Day Temperature: 42.19°F</p>
-                <p>Evening Temperature: 35.33°F</p>
-                <p>Night Temperature: 31.95°F</p>
-              </div>
-              <div class="misc-details">
-                <p>Atmospheric Pressure: 1021 hPa</p>
-                <p>Humidity: 74%</p>
-                <p>Wind Speed: 1.23 mph</p>
-              </div>
+            <div class="form-group">
+                <label for="firstNightReminder">First Night Reminder:</label>
+                <input type="text" class="form-control" id="firstNightReminder">
             </div>
-            -->
-          </div>
+            <div class="form-group">
+                <label for="otherNightsReminder">Other Nights Reminder:</label>
+                <input type="text" class="form-control" id="otherNightsReminder">
+            </div>
+            <div class="form-group">
+                <label for="tokens">Tokens:</label>
+                <input type="text" class="form-control" id="tokens">
+            </div>
+        </div>
 
-      </div>
-  </div>
+        <h2 class="mt-5">Characters</h2>
+        <div id="characterImage" class="characterImage p-3">
+
+        </div>
+        <h2 class="mt-5">Script</h2>
+        <div id="scriptImage" class="scriptImage p-3">
+        </div>
+    </div>
 </body>
+
 </html>
