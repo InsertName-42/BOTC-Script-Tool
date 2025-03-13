@@ -10,6 +10,6 @@ class BuildCharacter {
       };
       
       characterList.addCharacter(characterDetails); //Adding the character to the character list
-      displayScript.updateDisplay(); //Update the display with new character data
+      displayCharacters.updateDisplay(); //Update the display with new character data
   }
 }
