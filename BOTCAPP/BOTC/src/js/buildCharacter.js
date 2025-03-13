@@ -1,6 +1,6 @@
 class BuildCharacter {
   static buildCharacter() {
-      const characterDetails = {
+      return {
           name: document.getElementById('characterName').value,
           team: document.getElementById('team').value,
           ability: document.getElementById('ability').value,
@@ -8,8 +8,5 @@ class BuildCharacter {
           otherNightReminder: document.getElementById('otherNightsReminder').value,
           tokens: document.getElementById('tokens').value
       };
-      
-      characterList.addCharacter(characterDetails); //Adding the character to the character list
-      displayCharacters.updateDisplay(); //Update the display with new character data
   }
 }

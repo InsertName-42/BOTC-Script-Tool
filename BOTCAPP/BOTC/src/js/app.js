@@ -10,19 +10,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addCharacterBtn.addEventListener('click', function () {
         const name = nameInput.value.trim();
+        let newCharacter;
+
         if (characterType.value === 'base' && name) {
-            FindCharacter.findCharacter(name); //Fetch and add base character
+            FindCharacter.findCharacter(name).then(character => {
+                if (character) {
+                    let characters = JSON.parse(localStorage.getItem('characters')) || [];
+                    characters.push(character);
+                    characterList.setCharacters(characters);
+                    DisplayCharacters.updateDisplay();
+                }
+            });
         } else if (characterType.value === 'homebrew') {
-            const homebrewCharacter = {
-                name: name,
-                team: document.getElementById('team').value,
-                ability: document.getElementById('ability').value,
-                firstNightReminder: document.getElementById('firstNightReminder').value,
-                otherNightReminder: document.getElementById('otherNightsReminder').value,
-                tokens: document.getElementById('tokens').value,
-            };
-            DisplayBuild.displayBuild(homebrewCharacter); //Call to display the homebrew character
-            characterList.addCharacter(homebrewCharacter); //Add homebrew character to local storage
+            const homebrewCharacter = BuildCharacter.buildCharacter();
+            let characters = JSON.parse(localStorage.getItem('characters')) || [];
+            characters.push(homebrewCharacter);
+            characterList.setCharacters(characters);
+            DisplayCharacters.updateDisplay();
+        }
+        nameInput.value = '';
+        if (characterType.value === 'homebrew'){
+            document.getElementById('team').value ='';
+            document.getElementById('ability').value ='';
+            document.getElementById('firstNightReminder').value ='';
+            document.getElementById('otherNightsReminder').value ='';
+            document.getElementById('tokens').value ='';
         }
     });
 });

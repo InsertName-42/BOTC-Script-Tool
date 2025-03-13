@@ -1,14 +1,19 @@
 //Combines existing characters in local storage with characters from buildCharacter and findCharacter
 //Saves this new list to local storage
-class CharacterList {
-    constructor() {
-        this.characters = JSON.parse(localStorage.getItem('characters')) || [];
-    }
+const characterList = {
+    getCharacters: function () {
+        return JSON.parse(localStorage.getItem('characters')) || [];
+    },
 
-    addCharacter(character) {
-        this.characters.push(character);
-        localStorage.setItem('characters', JSON.stringify(this.characters));
-    }
-}
+    setCharacters: function (characters) {
+        localStorage.setItem('characters', JSON.stringify(characters));
+    },
 
-const characterList = new CharacterList();
+    addCharacter: function (character) {
+        const characters = this.getCharacters();
+        characters.push(character);
+        this.setCharacters(characters);
+    },
+
+    //Many more possible features
+};
