@@ -60,5 +60,11 @@ module.exports = {
             inject: 'body',
         }),
         // Add more HtmlWebpackPlugin instances for other HTML files if needed
-    ]
+    ],
+    resolve: {
+        fallback: {
+            "fs": false, // Add this line
+            // ... other fallbacks ...
+        }
+    }
 };

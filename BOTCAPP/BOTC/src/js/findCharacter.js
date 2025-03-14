@@ -1,13 +1,13 @@
-//Gets a character from the base characters
+//Finds existing characters
 import { characterList } from './characterList.js';
-import { DisplayCharacters } from './displayCharacters.js'; // Updated import
+import { DisplayCharacters } from './displayCharacters.js';
+import { ScriptUpdater } from './scriptUpdater.js';
 
 export class FindCharacter {
     static async findCharacter(name) {
         try {
             const response = await fetch("https://raw.githubusercontent.com/InsertName-42/BOTC-Script-Tool/refs/heads/main/BOTCAPP/BOTC/roles.json");
 
-            // Check if the response is successful
             if (!response.ok) {
                 throw new Error(`Network response was not OK: ${response.statusText}`);
             }
@@ -22,11 +22,16 @@ export class FindCharacter {
                     ability: character.ability,
                     firstNightReminder: character.firstNightReminder,
                     otherNightReminder: character.otherNightReminder,
-                    tokens: character.reminders.join(", ") // Create a comma-separated string for tokens
+                    tokens: character.reminders.join(", ")
                 };
 
-                characterList.addCharacter(characterDetails); // Add the character to the character list
-                DisplayCharacters.updateDisplay(characterDetails); // Display the character details. Updated line
+                let characters = characterList.getCharacters();
+                characters.push(characterDetails);
+                characterList.setCharacters(characters);
+
+                DisplayCharacters.updateDisplay();
+
+                ScriptUpdater.updateScriptHtml('scriptImage');
             } else {
                 alert("Character not found");
             }

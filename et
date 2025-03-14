@@ -1,0 +1,13 @@
+[33mf204251[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Script functionality, bug fixes
+[33ma52a1c7[m Merge branch 'main' of https://github.com/InsertName-42/BOTC-Script-Tool Only slight change to remote
+[33mf1c72a3[m Mostly functional code before conversion to modules
+[33md5ba73a[m Update README.md
+[33m67d3636[m Update README.md
+[33m8baefec[m Fixed reference bug, fixed node sources, added framework for script building.
+[33me9af7ee[m Slight update
+[33ma257e0b[m First draft, functional html, incomplete code
+[33m2250a3e[m Updated roles
+[33mcc0dc79[m Create roles.json
+[33ma341f10[m Begin initial setup
+[33m46e5ea9[m Add files via upload
+[33m5c147de[m Initial commit

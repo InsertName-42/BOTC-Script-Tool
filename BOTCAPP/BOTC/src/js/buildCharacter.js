@@ -1,3 +1,4 @@
+//Get character from html inputs
 export class BuildCharacter {
   static buildCharacter() {
       return {

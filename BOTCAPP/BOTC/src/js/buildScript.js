@@ -4,7 +4,7 @@ export class BuildScript {
             return "No characters provided.";
         }
 
-        // Group characters by team
+        //Group characters by team
         const teams = {};
         characters.forEach(character => {
             if (!teams[character.team]) {
@@ -13,12 +13,12 @@ export class BuildScript {
             teams[character.team].push(character);
         });
 
-        // Generate HTML for each team
+        //Generate HTML for each team
         let html = '';
         for (const team in teams) {
             if (teams.hasOwnProperty(team)) {
                 html += `<h2>${team}</h2>`;
-                html += '<div style="display: flex; flex-wrap: wrap;">'; // Start flex container
+                html += '<div style="display: flex; flex-wrap: wrap;">'; //Start container
 
                 teams[team].forEach(character => {
                     html += `
@@ -32,7 +32,7 @@ export class BuildScript {
                     `;
                 });
 
-                html += '</div>'; // End flex container
+                html += '</div>'; //End container
             }
         }
 

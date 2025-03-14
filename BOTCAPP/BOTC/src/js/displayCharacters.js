@@ -5,10 +5,9 @@ export class DisplayCharacters {
 
         let characters = [];
         if (character) {
-            // Display a single character
             characters.push(character);
         } else {
-            // Display all characters from local storage
+            //Display characters from local storage
             characters = JSON.parse(localStorage.getItem('characters')) || [];
         }
 

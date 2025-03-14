@@ -1,15 +1,24 @@
+//Primary entry, adds event handlers
+import html2pdf from 'html2pdf.js';
 import { BuildCharacter } from './buildCharacter.js';
 import { characterList } from './characterList.js';
 import { DisplayCharacters } from './displayCharacters.js';
 import { FindCharacter } from './findCharacter.js';
 import { BuildScript } from './buildScript.js';
 import { PrintScript } from './printScript.js';
-
-import html2pdf from 'html2pdf.js';
+import { ScriptUpdater } from './scriptUpdater.js';
 
 import '../css/styles.css';
 
 document.addEventListener("DOMContentLoaded", function () {
+    //Load characters from local storage
+    const storedCharacters = localStorage.getItem('characters');
+    if (storedCharacters) {
+        characterList.setCharacters(JSON.parse(storedCharacters));
+        DisplayCharacters.updateDisplay();
+        ScriptUpdater.updateScriptHtml('scriptImage');
+    }
+
     const characterType = document.getElementById('characterType');
     const nameInput = document.getElementById('characterName');
     const homebrewSection = document.getElementById('homebrewSection');
@@ -29,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     characters.push(character);
                     characterList.setCharacters(characters);
                     DisplayCharacters.updateDisplay();
+                    ScriptUpdater.updateScriptHtml('scriptImage');
+                    saveCharactersToLocalStorage();
                 }
             });
         } else if (characterType.value === 'homebrew') {
@@ -37,11 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
             characters.push(homebrewCharacter);
             characterList.setCharacters(characters);
             DisplayCharacters.updateDisplay();
-            const scriptHtml = BuildScript.organizeCharacters(characters);
-            const scriptContainer = document.getElementById('scriptImage');
-            if (scriptContainer) {
-                scriptContainer.innerHTML = scriptHtml;
-            }
+            ScriptUpdater.updateScriptHtml('scriptImage');
+            saveCharactersToLocalStorage();
         }
 
         nameInput.value = '';
@@ -53,12 +61,19 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('tokens').value = '';
         }
     });
-    const printPdfBtn = document.getElementById('printPdfBtn');
-    if (printPdfBtn) {
-        printPdfBtn.addEventListener('click', function () {
-            const characters = characterList.getCharacters();
-            const scriptData = BuildScript.organizeCharacters(characters); // Get the script data
-            PrintScript.printToPdf(scriptData, 'botc_script.pdf'); // Generate PDF
+
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    if (downloadPdfBtn) {
+        downloadPdfBtn.addEventListener('click', function () {
+            setTimeout(function () {
+                PrintScript.printToPdf('scriptImage', 'botc_script.pdf');
+            }, 500);
         });
     }
+
+    function saveCharactersToLocalStorage() {
+        localStorage.setItem('characters', JSON.stringify(characterList.getCharacters()));
+    }
+
+    ScriptUpdater.updateScriptHtml('scriptImage');
 });
