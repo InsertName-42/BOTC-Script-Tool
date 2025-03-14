@@ -24,6 +24,9 @@
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
-    "bootstrap": "^5.2.1"
+    "bootstrap": "^5.2.1",
+    "brfs": "^2.0.2",
+    "browserify": "^17.0.1",
+    "html2pdf.js": "^0.10.3"
   }
 }

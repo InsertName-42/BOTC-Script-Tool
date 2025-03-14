@@ -1,10 +1,16 @@
-//Renders the characters on the script
-class DisplayCharacters {
-    static updateDisplay() {
+export class DisplayCharacters {
+    static updateDisplay(character = null) {
         const characterImage = document.getElementById('characterImage');
         characterImage.innerHTML = '';
 
-        const characters = JSON.parse(localStorage.getItem('characters')) || [];
+        let characters = [];
+        if (character) {
+            // Display a single character
+            characters.push(character);
+        } else {
+            // Display all characters from local storage
+            characters = JSON.parse(localStorage.getItem('characters')) || [];
+        }
 
         characters.forEach(character => {
             //Create a card element for each character

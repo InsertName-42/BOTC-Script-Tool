@@ -1,3 +1,10 @@
+JavaScript
+
+import { characterList } from './characterList.js';
+import { FindCharacter } from './findCharacter.js';
+import { DisplayCharacters } from './displayCharacters.js'; // Updated import
+import { BuildCharacter } from './buildCharacter.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const characterType = document.getElementById('characterType');
     const nameInput = document.getElementById('characterName');
@@ -18,23 +25,17 @@ document.addEventListener("DOMContentLoaded", function () {
     addCharacterBtn.addEventListener('click', function () {
         const name = nameInput.value.trim();
         if (characterType.value === 'base' && name) {
-            findCharacter(name);
+            FindCharacter.findCharacter(name); // Use the imported FindCharacter
         } else if (characterType.value === 'homebrew') {
-            const homebrewCharacter = {
-                name: name,
-                team: document.getElementById('team').value,
-                ability: document.getElementById('ability').value,
-                firstNightReminder: document.getElementById('firstNightReminder').value,
-                otherNightReminder: document.getElementById('otherNightsReminder').value,
-                tokens: document.getElementById('tokens').value,
-            };
+            const homebrewCharacter = BuildCharacter.buildCharacter(); // Use the imported BuildCharacter
+
             //add the character to local storage
             let characters = characterList.getCharacters();
             characters.push(homebrewCharacter);
             characterList.setCharacters(characters);
 
             console.log(homebrewCharacter)
-            DisplayBuild.displayBuild(homebrewCharacter); // Call to display the homebrew character
+            DisplayCharacters.updateDisplay(homebrewCharacter); // Call to display the homebrew character, updated line
 
             // Clear input fields
             nameInput.value = '';

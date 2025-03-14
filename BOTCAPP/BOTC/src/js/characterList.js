@@ -1,6 +1,6 @@
 //Combines existing characters in local storage with characters from buildCharacter and findCharacter
 //Saves this new list to local storage
-const characterList = {
+export const characterList = {
     getCharacters: function () {
         return JSON.parse(localStorage.getItem('characters')) || [];
     },

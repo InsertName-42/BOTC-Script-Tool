@@ -1,4 +1,4 @@
-class BuildCharacter {
+export class BuildCharacter {
   static buildCharacter() {
       return {
           name: document.getElementById('characterName').value,
